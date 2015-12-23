@@ -1,0 +1,28 @@
+	<section>
+		<div>
+			<h2> Comments Section </h2>
+		</div>
+
+		<span> <%= link_to "Comments",'#', id:'lnkComment' %></span>
+		<ol class="comments-section">
+
+		<!-- @comments automatically becomes collection of _comment.html.erb partial. Same partial will repeat for each object  -->
+			<%= render @comments %>
+		</ol>
+		<br>
+		<div style="padding-top:20px;">
+			<%= form_for @new_comment, :url=>{:action=>'create'}, remote:true do |f| %>
+				<div style="">
+					<%= f.text_area(:content_body, :size=>'70x6')%>
+				</div>
+				<div>
+					<%= submit_tag("Submit Comment")%>
+				</div>
+			<% end %> 
+		</div>
+	</section>
+
+	<style type="text/css">
+		#lnkComment{color:#333;font-weight:bold;}
+		.comments-section{display:block;padding-top:20px;}
+	</style>
